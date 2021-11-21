@@ -55,6 +55,7 @@ export class Screen {
     const [newWidth, newHeight] = stdout.getWindowSize()
     this.width = newWidth
     this.height = newHeight * 2
+    this.clear()
     this.render()
   }
 
