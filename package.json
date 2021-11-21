@@ -1,6 +1,9 @@
 {
   "name": "console-render",
   "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon main.ts"
+  },
   "devDependencies": {
     "@types/node": "^16.11.9",
     "nodemon": "^2.0.15",
