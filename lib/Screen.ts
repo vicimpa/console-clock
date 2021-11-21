@@ -58,6 +58,13 @@ export class Screen {
     this.render()
   }
 
+  clear() {
+    for (let y = this.height - 1; y >= 0; y--) {
+      stdout.cursorTo(0, y)
+      stdout.clearLine(1)
+    }
+  }
+
   render() {
     for (let y = 0; y < this.height; y += 2) {
       for (let x = 0; x < this.width; x++) {
