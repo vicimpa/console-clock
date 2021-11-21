@@ -16,13 +16,11 @@ export const drawPoint = (n: number) => {
   const [a, b] = [n >> 4 & 0b1111, n & 0b1111]
   const [cA, cB] = [a, b].map(e => Colors[e])
 
-  if (a != T && b == T) return R + Fg[cA] + '▀'
-  if (b != T && a == T) return R + Fg[cB] + '▄'
-  if (a != T && b != T) return R + Fg[cA] + Bg[cB] + '▀'
-  return R + ' '
+  if (a != T && b == T) return Fg[cA] + '▀'
+  if (b != T && a == T) return Fg[cB] + '▄'
+  if (a != T && b != T) return Fg[cA] + Bg[cB] + '▀' + "\x1b[0m"
+  return ' '
 }
-
-const R = "\x1b[0m"
 
 class Fg {
   static BLACK = "\x1b[30m"
