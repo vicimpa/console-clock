@@ -8,6 +8,7 @@ stdin.resume()
 export class Screen {
   width = 0
   height = 0
+  runned = false
 
   objects: Entity[] = []
 
@@ -42,15 +43,6 @@ export class Screen {
     stdout.write(drawPoint(first << 4 | second))
   }
 
-  run() {
-    this.resize()
-    this.render()
-    stdout.on('resize', () => {
-      this.resize()
-      this.render()
-    })
-  }
-
   resize() {
     const [newWidth, newHeight] = stdout.getWindowSize()
     this.width = newWidth
@@ -67,6 +59,13 @@ export class Screen {
   }
 
   render() {
+    if (!this.runned) {
+      this.runned = true
+      stdout.on('resize', () => {
+        this.resize()
+        this.render()
+      })
+    }
     for (let y = 0; y < this.height; y += 2) {
       for (let x = 0; x < this.width; x++) {
         this.renderPoint(x, y)
